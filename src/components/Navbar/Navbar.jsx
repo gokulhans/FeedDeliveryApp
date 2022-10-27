@@ -36,7 +36,7 @@ function Navbar() {
               <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
             </button> */}
           </div>
-          <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+          {/* <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
             <ul className="flex flex-col p-4 mt-4 bg-green-50 rounded-lg border border-green-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-green-100 dark:bg-green-800 md:dark:bg-green-900 dark:border-green-700">
               <li>
                 <Link to={"/"} className="block py-2 pr-4 pl-3 text-green-100 bg-black rounded md:bg-transparent md:text-black md:p-0 dark:text-green-100" aria-current="page">Home</Link>
@@ -45,7 +45,7 @@ function Navbar() {
                 <Link to={"/admin"} className="block py-2 pr-4 pl-3 text-green-700 rounded hover:bg-green-200 md:hover:bg-transparent md:hover:text-black md:p-0 dark:text-green-400 md:dark:hover:text-green-100 dark:hover:bg-green-700 dark:hover:text-green-100 md:dark:hover:bg-transparent dark:border-green-700">Admin</Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </nav>
 

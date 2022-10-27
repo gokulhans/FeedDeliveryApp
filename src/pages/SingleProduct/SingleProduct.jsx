@@ -59,7 +59,7 @@ function SingleProduct() {
       {/* <p className="pt-2 text-md font-semibold leading-none text-gray-900 dark:text-white">Poolakode</p> */}
       <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.address}</p>
       <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.phone}</p>
-      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.users} orders</p>
+      <p className="pt-2 text-md font-semibold leading-none text-green-600 dark:text-white">{product.hosteldata.users} orders</p> 
       <p className="pt-5 text-4xl font-bold leading-none text-green-600 dark:text-white">{product.price}</p>
 
       <iframe src={product.hosteldata.location} width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
