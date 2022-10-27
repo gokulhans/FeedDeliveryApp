@@ -18,11 +18,11 @@ function SingleProduct() {
 
   useEffect(() => {
     async function ProjectGet(id) {
-      const docRefq = doc(db, "products", id);
+      const docRefq = doc(db, "orders", id);
       try {
         const docSnap = await getDoc(docRefq);
         setProduct(docSnap.data())
-        setName(docSnap.data().name)
+        setName(docSnap.data().hostel)
         setDesc(docSnap.data().desc)
         setPrice(docSnap.data().price)
         // setStatus(docSnap.data().status)
@@ -49,18 +49,20 @@ function SingleProduct() {
 
   return (
     <div className='pt-5 px-8 flex flex-col justify-start items-start'>
-      <h5 className="pt-3 text-3xl font-bold leading-none text-gray-900 dark:text-white">{product.name}</h5>
+      <h5 className="pt-3 text-3xl font-bold leading-none text-gray-900 dark:text-white">{product.product}</h5>
 
-      <p className="pt-5 text-sm font-medium leading-none text-gray-600 dark:text-white">{product.desc}</p>
+      <p className="pt-5 text-sm font-medium leading-none text-gray-600 dark:text-white">{product.itemtype}</p>
 
       {/* <p className="pt-5 text-xl font-bold leading-none text-green-600 dark:text-white">Address</p> */}
-      <p className="pt-5 text-lg font-bold leading-none text-green-600 dark:text-white">Gokul</p>
-      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">Kattangel</p>
+      <p className="pt-5 text-lg font-bold leading-none text-green-600 dark:text-white">{product.hosteldata.name}</p>
+      {/* <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">Kattangel</p> */}
       {/* <p className="pt-2 text-md font-semibold leading-none text-gray-900 dark:text-white">Poolakode</p> */}
-      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">PIN:- 673601</p>
-      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">Kozhikode,Kerala,India</p>
-      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">7034598461</p>
-      <p className="pt-5 text-4xl font-bold leading-none text-green-600 dark:text-white">{product.price} $</p>
+      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.address}</p>
+      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.phone}</p>
+      <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.hosteldata.users} orders</p>
+      <p className="pt-5 text-4xl font-bold leading-none text-green-600 dark:text-white">{product.price}</p>
+
+      <iframe src={product.hosteldata.location} width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
       <button className='fixed bottom-20 left-0 right-0 h-12 w-full rounded text-white font-semibold'>
         <div className='bg-blue-500 mx-5 py-3 h-12 rounded text-white font-semibold'>

@@ -12,14 +12,14 @@ function Product({ product,index }) {
           </div> */}
           <div className="flex-1 min-w-0">
             <p className="text-base font-semibold text-gray-900 truncate dark:text-white">
-              {product.name}
+              {product.hostel}
             </p>
             <p className="text-xs text-gray-500 truncate dark:text-gray-400">
-              orderd by Anu
+              {product.itemtype}
             </p>
           </div>
           <div className="inline-flex items-center text-sm font-semibold text-green-700 dark:text-white">
-            {product.price} $
+            {product.product}
           </div>
         </div>
       </Link>
