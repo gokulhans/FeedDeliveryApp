@@ -10,3 +10,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer components {
+  .spinner {
+    @apply w-screen h-60 mt-32 flex justify-center items-center;
+  }
+}
