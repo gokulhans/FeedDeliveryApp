@@ -1,12 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { query, collection, getDoc, doc } from 'firebase/firestore';
+import { query, collection, getDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from './../../firebase-config';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
+import { addDoc } from 'firebase/firestore';
 
 
 function SingleProduct() {
@@ -50,6 +51,35 @@ function SingleProduct() {
     navigate("/");
   };
 
+  const historyCollectionRef = collection(db, "ordershistory");
+
+  const deliverOrder = async (order) => {
+    console.log(order);
+    
+    alert("Item Deliverd")
+    
+    await setDoc(doc(db, "orders", id), {
+      hostel: order.hostel,
+      hosteldata:order.hosteldata,
+      product:order.product,
+      itemtype:order.itemtype,
+      status:"deliverd",
+    });
+
+    
+    await addDoc(historyCollectionRef, {
+      hostel: order.hostel,
+      hosteldata:order.hosteldata,
+      product:order.product,
+      itemtype:order.itemtype,
+      status:"deliverd",
+      timestamp:serverTimestamp()
+    });
+
+    navigate("/");
+
+  };
+
   if (isLoading) {
 
     return (
@@ -80,8 +110,10 @@ function SingleProduct() {
           <p className="pt-2 text-md font-semibold leading-none text-gray-600 dark:text-white">{product.itemtype}</p>
           <p className="pt-5 text-4xl font-bold leading-none text-green-600 dark:text-white">{product.price}</p>
         </div>
+        <div className='w-full flex justify-center items-center'>
 
-        <iframe src={product.hosteldata.location} width="400" height="300" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src={product.hosteldata.location} width="100%" height="300" style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
 
         {/* <button className='fixed bottom-20 left-0 right-0 h-12 w-full rounded text-white font-semibold'>
           <div className='bg-blue-500 mx-5 py-3 h-12 rounded text-white font-semibold'>
@@ -89,7 +121,7 @@ function SingleProduct() {
           </div>
         </button> */}
 
-        <button onClick={editProject} className='fixed bottom-5 left-0 right-0 h-12 w-full rounded text-white font-semibold'>
+        <button onClick={()=>deliverOrder(product)} className='fixed bottom-5 left-0 right-0 h-12 w-full rounded text-white font-semibold'>
           <div className='bg-green-500 mx-5 py-3 h-12 rounded text-white font-semibold'>
             <i className="fa-solid fa-truck"></i> Mark as Deliverd
           </div>
