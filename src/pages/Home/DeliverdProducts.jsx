@@ -11,7 +11,7 @@ import Footer from '../../components/Footer/Footer';
 function DeliverdProducts() {
 
   const [productList, setProductList] = useState([]);
-  const productCollectionRef = query(collection(db, "products"), where("status", "==", "deliverd"))
+  const productCollectionRef = query(collection(db, "orders"), where("status", "==", "deliverd"))
   // let userid = localStorage.getItem("authorid");
   // const productCollectionRef = query(collection(db, "products"), where("author.id", "==", userid))
 
